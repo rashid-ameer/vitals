@@ -1,6 +1,6 @@
 import { z } from "zod";
 
 export const createPostSchema = z.object({
-  title: z.string().min(1, "Title is required for post"),
-  content: z.string().min(1, "Content is required for post"),
+  title: z.string({ message: "title is required field" }),
+  content: z.string({ message: "content is required field" }),
 });
