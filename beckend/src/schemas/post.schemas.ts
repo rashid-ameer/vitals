@@ -14,3 +14,7 @@ export const updatePostSchema = z.object({
   title: z.string().optional(),
   content: z.string().optional(),
 });
+
+export const getPostSchema = z.string({
+  message: "Id is required for getting post",
+});

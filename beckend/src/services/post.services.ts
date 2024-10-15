@@ -31,3 +31,16 @@ export const updatePost = async ({ id, title, content }: UpdatePostProps) => {
 
   return newPost;
 };
+
+export const getPosts = async () => {
+  const posts = await PostModel.find();
+  return posts;
+};
+
+export const getPost = async (id: string) => {
+  const post = await PostModel.findById(id);
+  if (!post) {
+    throw new ApiError(404, "Post not found");
+  }
+  return post;
+};
