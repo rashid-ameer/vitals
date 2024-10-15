@@ -6,7 +6,7 @@ import connectDB from "./lib/db";
 
 // health check
 app.use("/", (req, res) => {
-  res.json(new ApiResponse("Servis is running"));
+  res.json(new ApiResponse("Status is Healthy"));
 });
 
 // starting server

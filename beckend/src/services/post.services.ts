@@ -9,3 +9,25 @@ export const createPost = async (data: CreatePostProps) => {
   }
   return post;
 };
+
+export const deletePost = async (id: string) => {
+  const post = await PostModel.deleteOne({ _id: id });
+  if (post.deletedCount === 0) {
+    throw new ApiError(404, "Post not found");
+  }
+};
+
+type UpdatePostProps = { id: string; title?: string; content?: string };
+export const updatePost = async ({ id, title, content }: UpdatePostProps) => {
+  const post = await PostModel.findById(id);
+  if (!post) {
+    throw new ApiError(404, "Post not found");
+  }
+
+  post.title = title || post.title;
+  post.content = content || post.content;
+
+  const newPost = await post.save();
+
+  return newPost;
+};
