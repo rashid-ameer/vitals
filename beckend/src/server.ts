@@ -1,10 +1,11 @@
 import "dotenv/config";
 import app from "./app";
 import { PORT } from "./constants/env";
+import ApiResponse from "./lib/api-response";
 
 // health check
 app.use("/", (req, res) => {
-  res.json({ status: "Healthy" });
+  res.json(new ApiResponse("Servis is running"));
 });
 
 // starting server
